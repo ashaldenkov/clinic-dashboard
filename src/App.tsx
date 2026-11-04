@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import DiagnosisHistory from './components/DiagnosisHistory';
 import DiagnosticList from './components/DiagnosticList';
 import Header from './components/Header';
@@ -5,6 +7,9 @@ import LabResults from './components/LabResults';
 import PatientList from './components/PatientList';
 import PatientProfile from './components/PatientProfile';
 import { usePatients } from './hooks/usePatients';
+
+// Featured patient from the design.
+const DEFAULT_PATIENT_NAME = 'Jessica Taylor';
 
 function App() {
   return (
@@ -19,6 +24,7 @@ function App() {
 
 function Dashboard() {
   const patientsState = usePatients();
+  const [selectedName, setSelectedName] = useState(DEFAULT_PATIENT_NAME);
 
   if (patientsState.status === 'loading') {
     return (
@@ -37,19 +43,22 @@ function Dashboard() {
   }
 
   const { patients } = patientsState;
-  // as far as there's no need for displaying other patients' data, Jessica's data is hardcoded as active patient
-  const activePatient = patients[3];
+  const selected = patients.find((patient) => patient.name === selectedName) ?? patients[0];
 
   return (
     <>
-      <PatientList patientList={patients} />
+      <PatientList
+        patientList={patients}
+        selectedName={selected?.name}
+        onSelect={setSelectedName}
+      />
       <div>
-        <DiagnosisHistory clientData={activePatient} />
-        <DiagnosticList clientData={activePatient} />
+        <DiagnosisHistory clientData={selected} />
+        <DiagnosticList clientData={selected} />
       </div>
       <div>
-        <PatientProfile clientData={activePatient} />
-        <LabResults clientData={activePatient} />
+        <PatientProfile clientData={selected} />
+        <LabResults clientData={selected} />
       </div>
     </>
   );

@@ -1,10 +1,22 @@
 import ShowMore from '../assets/icons/more-horizontal.svg';
 import type { Patient } from '../types/patient';
 
-const PatientCard = ({ personData }: { personData: Patient }) => {
+interface PatientCardProps {
+  personData: Patient;
+  isSelected: boolean;
+  onSelect: (name: string) => void;
+}
+
+const PatientCard = ({ personData, isSelected, onSelect }: PatientCardProps) => {
   return (
-    <div className={`pl-5 py-4 pr-[30px] flex justify-between items-center hover:bg-accent-soft ${personData.name === 'Jessica Taylor' ? 'bg-accent-soft' : ''}`}>
-        <button className='flex items-center text-left'>
+    <div className={`pl-5 py-4 pr-[30px] flex justify-between items-center hover:bg-accent-soft ${isSelected ? 'bg-accent-soft' : ''}`}>
+        <button
+            className='flex items-center text-left'
+            aria-current={isSelected ? 'true' : undefined}
+            onClick={() => {
+              onSelect(personData.name);
+            }}
+        >
             <img src={personData.profile_picture} alt="profileImg" className='w-[48px] h-[48px] rounded-full mr-3'/>
             <div>
                 <div className='text-body font-bold'>{personData.name}</div>

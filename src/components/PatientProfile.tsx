@@ -9,10 +9,21 @@ import type { Patient } from '../types/patient'
 import { formatDateOfBirth } from '../utils/date'
 
 
+// The API only serves 96×96 avatars, which are blurry at 200×200.
+const HIGH_RES_PORTRAITS: Record<string, string> = {
+  'Jessica Taylor': ProfileImage,
+};
+
 const PatientProfile = ({ clientData }: { clientData: Patient | undefined }) => {
   return (
     <div className='h-[740px] w-[367px] rounded-2xl bg-white ml-[33px] px-5 py-8 flex flex-col items-center mt-[14px]'>
-      <img src={clientData?.name === 'Jessica Taylor' ? ProfileImage : clientData?.profile_picture} alt="ProfilePicture" width={200} height={200}/>
+      <img
+        src={clientData ? (HIGH_RES_PORTRAITS[clientData.name] ?? clientData.profile_picture) : undefined}
+        alt="ProfilePicture"
+        width={200}
+        height={200}
+        className='rounded-full'
+      />
       <div className='text-title mt-6 mb-8'>{clientData?.name}</div>
       <div className='self-start'>
         <div className='flex items-center'>

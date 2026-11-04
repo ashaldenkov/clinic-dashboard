@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import DiagnosisHistory from './components/DiagnosisHistory';
+import { DiagnosisHistory } from './components/diagnosis-history/DiagnosisHistory';
 import DiagnosticList from './components/DiagnosticList';
 import Header from './components/Header';
 import LabResults from './components/LabResults';
@@ -53,7 +53,7 @@ function Dashboard() {
         onSelect={setSelectedName}
       />
       <div>
-        <DiagnosisHistory clientData={selected} />
+        {selected && <DiagnosisHistory history={selected.diagnosis_history} />}
         <DiagnosticList clientData={selected} />
       </div>
       <div>

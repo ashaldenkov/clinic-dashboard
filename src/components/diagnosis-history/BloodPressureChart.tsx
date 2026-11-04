@@ -41,13 +41,16 @@ export function BloodPressureChart({ history, months }: BloodPressureChartProps)
     };
   }, [history, months]);
 
+  // A short history plots fewer points than `months`.
+  const monthsShown = data.labels?.length ?? 0;
+
   return (
     <Line
       data={data}
       options={OPTIONS}
       height={140}
       role="img"
-      aria-label={`Blood pressure chart for the last ${months} months`}
+      aria-label={`Blood pressure chart for the last ${monthsShown} ${monthsShown === 1 ? 'month' : 'months'}`}
     />
   );
 }

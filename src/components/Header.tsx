@@ -1,4 +1,3 @@
-import React from 'react'
 import TestLogo from '../assets/images/logo.svg';
 import Home from '../assets/icons/home.svg';
 import Group from '../assets/icons/group.svg';

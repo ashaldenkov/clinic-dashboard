@@ -4,10 +4,12 @@ import HeartRate from '../assets/icons/heart-rate.svg'
 import ArrowDown from '../assets/icons/arrow-down.svg'
 import ArrowUp from '../assets/icons/arrow-up.svg'
 import ExpandMore from '../assets/icons/expand-more.svg'
-import LineChart from '../components/lineChart'
+import LineChart from './LineChart'
+import type { Patient } from '../types/patient'
 
 
-const DiagnosisHistory = ( { clientData }) => {
+const DiagnosisHistory = ({ clientData }: { clientData: Patient | undefined }) => {
+  const latest = clientData?.diagnosis_history[0];
 
   return (
     <div className='h-[673px] w-[766px] rounded-2xl bg-white mt-[14px] p-5'>
@@ -32,13 +34,13 @@ const DiagnosisHistory = ( { clientData }) => {
                 <div className='h-[14px] w-[14px] bg-systolic rounded-full'></div>
                 <div className='ml-1 text-body font-bold'>Systolic</div>
               </div>
-              <div className='text-metric-sm'>{clientData?.diagnosis_history[0].blood_pressure.systolic.value}</div>
+              <div className='text-metric-sm'>{latest?.blood_pressure.systolic.value}</div>
               <div className='flex items-center pb-4 mt-1'>
-              {clientData?.diagnosis_history[0].blood_pressure.systolic.levels === 'Higher than Average' ? 
+              {latest?.blood_pressure.systolic.levels === 'Higher than Average' ? 
               <img src={ArrowUp} alt="ArrowUp" className='mr-2'/> : null}
-              {clientData?.diagnosis_history[0].blood_pressure.systolic.levels === 'Lower than Average' ? 
+              {latest?.blood_pressure.systolic.levels === 'Lower than Average' ? 
               <img src={ArrowDown} alt="ArrowDown" className='mr-2'/> : null}
-                <div className='text-body'>{clientData?.diagnosis_history[0].blood_pressure.systolic.levels}</div>
+                <div className='text-body'>{latest?.blood_pressure.systolic.levels}</div>
               </div>
             </div>
             <div className='mt-4'>
@@ -46,13 +48,13 @@ const DiagnosisHistory = ( { clientData }) => {
                 <div className='h-[14px] w-[14px] bg-diastolic rounded-full'></div>
                 <div className='ml-1 text-body font-bold'>Diastolic</div>
               </div>
-              <div className='text-metric-sm'>{clientData?.diagnosis_history[0].blood_pressure.diastolic.value}</div>
+              <div className='text-metric-sm'>{latest?.blood_pressure.diastolic.value}</div>
               <div className='flex items-center pb-4 mt-1'>
-                {clientData?.diagnosis_history[0].blood_pressure.diastolic.levels === 'Higher than Average' ? 
+                {latest?.blood_pressure.diastolic.levels === 'Higher than Average' ? 
                 <img src={ArrowUp} alt="ArrowUp" className='mr-2'/> : null}
-                {clientData?.diagnosis_history[0].blood_pressure.diastolic.levels === 'Lower than Average' ? 
+                {latest?.blood_pressure.diastolic.levels === 'Lower than Average' ? 
                 <img src={ArrowDown} alt="ArrowDown" className='mr-2'/> : null}
-                <div className='text-body'>{clientData?.diagnosis_history[0].blood_pressure.diastolic.levels}</div>
+                <div className='text-body'>{latest?.blood_pressure.diastolic.levels}</div>
               </div>
             </div>
           </div>
@@ -62,37 +64,37 @@ const DiagnosisHistory = ( { clientData }) => {
           <div className='bg-respiratory rounded-xl	w-[228px] h-[242px] p-4'>
             <img src={Respiratory} alt="RespiratoryRate" className='mb-4'/>
             <div className='text-label-lg'>Respiratory Rate</div>
-            <div className='mb-4 text-metric'>{clientData?.diagnosis_history[0].respiratory_rate.value} bpm</div>
+            <div className='mb-4 text-metric'>{latest?.respiratory_rate.value} bpm</div>
             <div className='flex items-center'>
-                {clientData?.diagnosis_history[0].respiratory_rate.levels === 'Higher than Average' ? 
+                {latest?.respiratory_rate.levels === 'Higher than Average' ? 
                 <img src={ArrowUp} alt="ArrowUp" className='mr-2'/> : null}
-                {clientData?.diagnosis_history[0].respiratory_rate.levels === 'Lower than Average' ? 
+                {latest?.respiratory_rate.levels === 'Lower than Average' ? 
                 <img src={ArrowDown} alt="ArrowDown" className='mr-2'/> : null}
-                <div className='text-body'>{clientData?.diagnosis_history[0].respiratory_rate.levels}</div>
+                <div className='text-body'>{latest?.respiratory_rate.levels}</div>
             </div>
           </div>
           <div className='bg-temperature rounded-xl	w-[228px] h-[242px] p-4'>
             <img src={Temperature} alt="Temperature" className='mb-4'/>
             <div className='text-label-lg'>Temperature</div>
-            <div className='mb-4 text-metric'>{clientData?.diagnosis_history[0].temperature.value}°F</div>
+            <div className='mb-4 text-metric'>{latest?.temperature.value}°F</div>
             <div className='flex items-center'>
-                {clientData?.diagnosis_history[0].temperature.levels === 'Higher than Average' ? 
+                {latest?.temperature.levels === 'Higher than Average' ? 
                 <img src={ArrowUp} alt="ArrowUp" className='mr-2'/> : null}
-                {clientData?.diagnosis_history[0].temperature.levels === 'Lower than Average' ? 
+                {latest?.temperature.levels === 'Lower than Average' ? 
                 <img src={ArrowDown} alt="ArrowDown" className='mr-2'/> : null}
-                <div className='text-body'>{clientData?.diagnosis_history[0].temperature.levels}</div>
+                <div className='text-body'>{latest?.temperature.levels}</div>
             </div>
           </div>
           <div className='bg-heart-rate rounded-xl	w-[228px] h-[242px] p-4'>
             <img src={HeartRate} alt="HeartRate" className='mb-4'/>
             <div className='text-label-lg'>Heart Rate</div>
-            <div className='mb-4 text-metric'>{clientData?.diagnosis_history[0].heart_rate.value} bpm</div>
+            <div className='mb-4 text-metric'>{latest?.heart_rate.value} bpm</div>
             <div className='flex items-center'>
-                {clientData?.diagnosis_history[0].heart_rate.levels === 'Higher than Average' ? 
+                {latest?.heart_rate.levels === 'Higher than Average' ? 
                 <img src={ArrowUp} alt="ArrowUp" className='mr-2'/> : null}
-                {clientData?.diagnosis_history[0].heart_rate.levels === 'Lower than Average' ? 
+                {latest?.heart_rate.levels === 'Lower than Average' ? 
                 <img src={ArrowDown} alt="ArrowDown" className='mr-2'/> : null}
-                <div className='text-body'>{clientData?.diagnosis_history[0].heart_rate.levels}</div>
+                <div className='text-body'>{latest?.heart_rate.levels}</div>
             </div>
           </div>
         </div>

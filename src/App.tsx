@@ -1,10 +1,10 @@
 
-import Header from './components/header'
-import Patients from './components/patients';
-import PatientProfile from './components/patientProfile'
-import LabResults from './components/labResults'
-import DiagnosisHistory from './components/diagnosisHistory'
-import DiagnosticList from './components/diagnosticList'
+import Header from './components/Header'
+import PatientList from './components/PatientList';
+import PatientProfile from './components/PatientProfile'
+import LabResults from './components/LabResults'
+import DiagnosisHistory from './components/DiagnosisHistory'
+import DiagnosticList from './components/DiagnosticList'
 
 import { useGetData } from './hooks/useGetData';
 
@@ -15,7 +15,7 @@ function App() {
     <div className="bg-page p-[18px] ">
       <Header/>
       <div className='flex justify-center'>
-        <Patients patientList={clients}/>
+        <PatientList patientList={clients}/>
         <div>
           {/* as far as there's no need for displaying other patients' data, Jessica's data is hardcoded as active patient*/}
           <DiagnosisHistory clientData={clients[3]}/>

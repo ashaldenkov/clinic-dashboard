@@ -1,7 +1,7 @@
-import React from 'react'
 import ShowMore from '../assets/icons/more-horizontal.svg';
+import type { Patient } from '../types/patient';
 
-const PatientCard = ({personData}) => {
+const PatientCard = ({ personData }: { personData: Patient }) => {
   return (
     <div className={`pl-5 py-4 pr-[30px] flex justify-between items-center hover:bg-accent-soft ${personData.name === 'Jessica Taylor' ? 'bg-accent-soft' : ''}`}>
         <button className='flex items-center text-left'>

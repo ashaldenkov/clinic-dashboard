@@ -1,4 +1,6 @@
 import { Line } from 'react-chartjs-2'
+import type { ChartData, ChartOptions } from 'chart.js'
+import type { DiagnosisRecord } from '../types/patient'
 import { 
     Chart as ChartJS, 
     CategoryScale, 
@@ -20,9 +22,9 @@ ChartJS.defaults.font.size = 12;
 ChartJS.defaults.font.family = 'Manrope';
 ChartJS.defaults.color = 'black';
 
-const LineChart = ({ chartData }) => {
+const LineChart = ({ chartData }: { chartData: DiagnosisRecord[] | undefined }) => {
 
-    const options = {
+    const options: ChartOptions<'line'> = {
         responsive: true,
         elements: {
             point: {
@@ -41,16 +43,16 @@ const LineChart = ({ chartData }) => {
         }
     }
 
-    const bloodPressureSystolic = []
-    const bloodPressureDiastolic = []
+    const bloodPressureSystolic: (number | null)[] = []
+    const bloodPressureDiastolic: (number | null)[] = []
 
     //adding 6 month data to data array
     for (let i = 5; i >= 0; i--) {
-        if (chartData) bloodPressureSystolic.push(chartData[i]?.blood_pressure.systolic.value)
-        if (chartData) bloodPressureDiastolic.push(chartData[i]?.blood_pressure.diastolic.value)
+        if (chartData) bloodPressureSystolic.push(chartData[i]?.blood_pressure.systolic.value ?? null)
+        if (chartData) bloodPressureDiastolic.push(chartData[i]?.blood_pressure.diastolic.value ?? null)
     }
 
-    const data = {
+    const data: ChartData<'line'> = {
         labels: [
             'Oct, 2023',
             'Nov, 2023',

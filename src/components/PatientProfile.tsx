@@ -1,4 +1,3 @@
-import React from 'react'
 import { format } from 'date-fns'
 
 import BirthIcon from '../assets/icons/birth-date.svg'
@@ -6,9 +5,10 @@ import FemaleIcon from '../assets/icons/female.svg'
 import PhoneIcon from '../assets/icons/phone.svg'
 import InsuranceIcon from '../assets/icons/insurance.svg'
 import ProfileImage from '../assets/images/jessica-taylor.png'
+import type { Patient } from '../types/patient'
 
 
-const PatientProfile = ({clientData}) => {
+const PatientProfile = ({ clientData }: { clientData: Patient | undefined }) => {
   return (
     <div className='h-[740px] w-[367px] rounded-2xl bg-white ml-[33px] px-5 py-8 flex flex-col items-center mt-[14px]'>
       <img src={clientData?.name === 'Jessica Taylor' ? ProfileImage : clientData?.profile_picture} alt="ProfilePicture" width={200} height={200}/>

@@ -1,9 +1,9 @@
-import React from 'react'
 import Search from '../assets/icons/search.svg';
-import PatientCard from './patientCard'
+import PatientCard from './PatientCard'
+import type { Patient } from '../types/patient';
 import { v4 as uuidv4 } from 'uuid';
 
-const Patients = ({ patientList }) => {
+const PatientList = ({ patientList }: { patientList: Patient[] }) => {
   return (
     <div className='max-h-[1026px] w-[367px] rounded-2xl bg-white mt-[14px] mr-[32px] pb-5'>
       <div className='flex justify-between mx-5 mt-5 mb-6 items-center'>
@@ -22,4 +22,4 @@ const Patients = ({ patientList }) => {
   )
 }
 
-export default Patients
+export default PatientList

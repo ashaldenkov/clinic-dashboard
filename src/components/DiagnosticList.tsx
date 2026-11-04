@@ -1,7 +1,7 @@
-import React from 'react'
 import { v4 as uuidv4 } from 'uuid';
+import type { Patient } from '../types/patient';
 
-const DiagnosticList = ({ clientData }) => {
+const DiagnosticList = ({ clientData }: { clientData: Patient | undefined }) => {
   return (
     <div className='w-[766px] rounded-2xl bg-white mt-[32px] p-5'>
         <div className='text-title mb-10'>Diagnostic List</div>

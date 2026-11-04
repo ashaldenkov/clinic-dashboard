@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 
+import type { Patient } from "../types/patient";
+
 
 export const useGetData = () => {
 
-    const [ clients, setClients ] = useState([])
+    const [ clients, setClients ] = useState<Patient[]>([])
     let username = 'coalition';
     let password = 'skills-test';
     let auth = btoa(`${username}:${password}`);
@@ -17,14 +19,14 @@ export const useGetData = () => {
             if (!response.ok) {
               throw new Error(`Response status: ${response.status}`);
             }
-            const json = await response.json();
+            const json = (await response.json()) as Patient[];
             setClients(json)
           } catch (error) {
-            console.error(error.message);
+            console.error(error instanceof Error ? error.message : error);
           }
     }
     useEffect(() => {
-        fetchList()
+        void fetchList()
     },[])
 
     return { clients }

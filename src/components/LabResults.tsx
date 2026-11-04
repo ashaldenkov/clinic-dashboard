@@ -1,9 +1,9 @@
-import React from 'react'
 import DownloadIcon from '../assets/icons/download.svg'
 import { v4 as uuidv4 } from 'uuid';
+import type { Patient } from '../types/patient';
 
 
-const LabResults = ({ clientData }) => {
+const LabResults = ({ clientData }: { clientData: Patient | undefined }) => {
   return (
     <div className='max-h-[296px] w-[367px] rounded-2xl bg-white ml-[33px] mt-8'>
       <div className='text-title pt-[20px] pl-[20px] pb-[27px]'>Lab Results</div>

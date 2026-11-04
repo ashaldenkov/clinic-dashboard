@@ -18,17 +18,6 @@ const LabResults = ({ clientData }: { clientData: Patient | undefined }) => {
             </div>
           )
         }))}
-        {/* additional results because there were only few */}
-        {clientData?.lab_results.map((analysis => {
-          return (
-            <div key={uuidv4()} className='flex justify-between items-center ml-[22px] px-4 h-10 hover:bg-page'>
-              <div className='text-caption'>{analysis}</div>
-              <button>
-                <img src={DownloadIcon} alt="DownloadIcon"/>
-              </button>
-            </div>
-          )
-        }))}
       </div>
     </div>
   )

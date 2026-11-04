@@ -1,4 +1,3 @@
-import { v4 as uuidv4 } from 'uuid';
 import type { Patient } from '../types/patient';
 
 const DiagnosticList = ({ clientData }: { clientData: Patient | undefined }) => {
@@ -11,9 +10,10 @@ const DiagnosticList = ({ clientData }: { clientData: Patient | undefined }) => 
           <div className='basis-1/6'>Status</div>
         </div>
         <div className='last:border-0 max-h-[160px] overflow-y-scroll'>
-          { clientData?.diagnostic_list.map((diagnosis) => {
+          { clientData?.diagnostic_list.map((diagnosis, index) => {
             return (
-              <div key={uuidv4()} className={`text-body flex justify-between py-2.5 items-center px-4 border-b border-page last:border-b-0`}>
+              // Diagnosis names repeat in the API data.
+              <div key={`${diagnosis.name}-${index}`} className={`text-body flex justify-between py-2.5 items-center px-4 border-b border-page last:border-b-0`}>
                 <div className='basis-1/5'>{diagnosis?.name}</div>
                 <div className='basis-1/2'>{diagnosis?.description}</div>
                 <div className='basis-1/6'>{diagnosis?.status}</div>

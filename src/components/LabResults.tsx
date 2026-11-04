@@ -1,5 +1,4 @@
 import DownloadIcon from '../assets/icons/download.svg'
-import { v4 as uuidv4 } from 'uuid';
 import type { Patient } from '../types/patient';
 
 
@@ -10,7 +9,7 @@ const LabResults = ({ clientData }: { clientData: Patient | undefined }) => {
       <div className='overflow-y-auto	 max-h-[176px] pb-[7px] mr-[22px]'>
         {clientData?.lab_results.map((analysis => {
           return (
-            <div key={uuidv4()} className='flex justify-between items-center ml-[22px] px-4 h-10 hover:bg-page'>
+            <div key={analysis} className='flex justify-between items-center ml-[22px] px-4 h-10 hover:bg-page'>
               <div className='text-caption'>{analysis}</div>
               <button>
                 <img src={DownloadIcon} alt="DownloadIcon"/>

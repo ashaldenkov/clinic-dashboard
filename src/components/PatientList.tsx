@@ -1,7 +1,6 @@
 import Search from '../assets/icons/search.svg';
 import PatientCard from './PatientCard'
 import type { Patient } from '../types/patient';
-import { v4 as uuidv4 } from 'uuid';
 
 const PatientList = ({ patientList }: { patientList: Patient[] }) => {
   return (
@@ -14,7 +13,7 @@ const PatientList = ({ patientList }: { patientList: Patient[] }) => {
       </div>
       <div className='overflow-y-auto h-fit max-h-[940px]'>
         { patientList?.map( (card) => {
-          return <PatientCard key={uuidv4()} personData={card}/>
+          return <PatientCard key={card.name} personData={card}/>
         })}
         
       </div>

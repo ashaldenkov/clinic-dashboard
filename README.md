@@ -20,7 +20,26 @@ The layout was designed primarily for desktop screens, as the dashboard is inten
 
 ## Tech Stack
 
-- React
-- JavaScript (ES6+)
-- Tailwind CSS
-- Chart.js
+- React 19
+- Vite 8
+- Tailwind CSS 4
+- Chart.js 4 (via react-chartjs-2)
+- date-fns
+
+## Getting Started
+
+Requires Node.js 26 (pinned in `.nvmrc` and `package.json#engines`).
+
+```bash
+nvm use        # switches to the Node version from .nvmrc
+npm ci         # installs exact versions from package-lock.json
+npm run dev    # starts the dev server at http://localhost:5173
+```
+
+## Scripts
+
+| Command           | Description                              |
+| ----------------- | ---------------------------------------- |
+| `npm run dev`     | Start the Vite dev server                |
+| `npm run build`   | Build the production bundle into `dist/` |
+| `npm run preview` | Serve the production build locally       |

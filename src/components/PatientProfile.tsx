@@ -1,4 +1,3 @@
-import { format } from 'date-fns'
 
 import BirthIcon from '../assets/icons/birth-date.svg'
 import FemaleIcon from '../assets/icons/female.svg'
@@ -6,6 +5,7 @@ import PhoneIcon from '../assets/icons/phone.svg'
 import InsuranceIcon from '../assets/icons/insurance.svg'
 import ProfileImage from '../assets/images/jessica-taylor.png'
 import type { Patient } from '../types/patient'
+import { formatDateOfBirth } from '../utils/date'
 
 
 const PatientProfile = ({ clientData }: { clientData: Patient | undefined }) => {
@@ -18,7 +18,7 @@ const PatientProfile = ({ clientData }: { clientData: Patient | undefined }) => 
           <img src={BirthIcon} alt="BirthIcon" className='mr-4'/>
           <div>
             <div className='text-label'>Date Of Birth</div>
-            <div className='text-body font-bold'>{clientData?.date_of_birth ? format(clientData?.date_of_birth, 'MMMM d, y') : ''}</div>
+            <div className='text-body font-bold'>{clientData ? formatDateOfBirth(clientData.date_of_birth) : ''}</div>
           </div>
         </div>
         <div className='flex items-center mt-6'>

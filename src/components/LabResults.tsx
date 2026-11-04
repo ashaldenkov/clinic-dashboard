@@ -1,25 +1,23 @@
-import DownloadIcon from '../assets/icons/download.svg'
-import type { Patient } from '../types/patient';
+import downloadIcon from '../assets/icons/download.svg';
+import { Card, CardTitle } from './Card';
 
-
-const LabResults = ({ clientData }: { clientData: Patient | undefined }) => {
+export function LabResults({ results }: { results: readonly string[] }) {
   return (
-    <div className='max-h-[296px] w-[367px] rounded-2xl bg-white ml-[33px] mt-8'>
-      <div className='text-title pt-[20px] pl-[20px] pb-[27px]'>Lab Results</div>
-      <div className='overflow-y-auto	 max-h-[176px] pb-[7px] mr-[22px]'>
-        {clientData?.lab_results.map((analysis => {
-          return (
-            <div key={analysis} className='flex justify-between items-center ml-[22px] px-4 h-10 hover:bg-page'>
-              <div className='text-caption'>{analysis}</div>
-              <button>
-                <img src={DownloadIcon} alt="DownloadIcon"/>
-              </button>
-            </div>
-          )
-        }))}
-      </div>
-    </div>
-  )
+    <Card className="mt-8 ml-[33px] max-h-[296px] w-[367px]">
+      <CardTitle className="pt-5 pb-[27px] pl-5">Lab Results</CardTitle>
+      <ul className="mr-[22px] max-h-[176px] overflow-y-auto pb-[7px]">
+        {results.map((result) => (
+          <li
+            key={result}
+            className="ml-[22px] flex h-10 items-center justify-between px-4 hover:bg-page"
+          >
+            <span className="text-caption">{result}</span>
+            <button type="button" aria-label={`Download ${result}`}>
+              <img src={downloadIcon} alt="" />
+            </button>
+          </li>
+        ))}
+      </ul>
+    </Card>
+  );
 }
-
-export default LabResults

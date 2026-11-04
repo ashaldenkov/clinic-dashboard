@@ -1,23 +1,23 @@
 import { useState } from 'react';
 
 import { DiagnosisHistory } from './components/diagnosis-history/DiagnosisHistory';
-import DiagnosticList from './components/DiagnosticList';
-import Header from './components/Header';
-import LabResults from './components/LabResults';
-import PatientList from './components/PatientList';
-import PatientProfile from './components/PatientProfile';
+import { DiagnosticList } from './components/DiagnosticList';
+import { Header } from './components/Header';
+import { LabResults } from './components/LabResults';
+import { PatientList } from './components/PatientList';
+import { PatientProfile } from './components/PatientProfile';
 import { usePatients } from './hooks/usePatients';
 
 // Featured patient from the design.
 const DEFAULT_PATIENT_NAME = 'Jessica Taylor';
 
-function App() {
+export function App() {
   return (
-    <div className="bg-page p-[18px]">
+    <div className="p-[18px]">
       <Header />
-      <div className="flex justify-center">
+      <main className="flex justify-center">
         <Dashboard />
-      </div>
+      </main>
     </div>
   );
 }
@@ -47,21 +47,19 @@ function Dashboard() {
 
   return (
     <>
-      <PatientList
-        patientList={patients}
-        selectedName={selected?.name}
-        onSelect={setSelectedName}
-      />
-      <div>
-        {selected && <DiagnosisHistory history={selected.diagnosis_history} />}
-        <DiagnosticList clientData={selected} />
-      </div>
-      <div>
-        <PatientProfile clientData={selected} />
-        <LabResults clientData={selected} />
-      </div>
+      <PatientList patients={patients} selectedName={selected?.name} onSelect={setSelectedName} />
+      {selected && (
+        <>
+          <div>
+            <DiagnosisHistory history={selected.diagnosis_history} />
+            <DiagnosticList diagnoses={selected.diagnostic_list} />
+          </div>
+          <div>
+            <PatientProfile patient={selected} />
+            <LabResults results={selected.lab_results} />
+          </div>
+        </>
+      )}
     </>
   );
 }
-
-export default App;

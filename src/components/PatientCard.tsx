@@ -1,33 +1,40 @@
-import ShowMore from '../assets/icons/more-horizontal.svg';
+import moreHorizontalIcon from '../assets/icons/more-horizontal.svg';
 import type { Patient } from '../types/patient';
+import { cx } from '../utils/cx';
 
 interface PatientCardProps {
-  personData: Patient;
+  patient: Patient;
   isSelected: boolean;
   onSelect: (name: string) => void;
 }
 
-const PatientCard = ({ personData, isSelected, onSelect }: PatientCardProps) => {
+export function PatientCard({ patient, isSelected, onSelect }: PatientCardProps) {
   return (
-    <div className={`pl-5 py-4 pr-[30px] flex justify-between items-center hover:bg-accent-soft ${isSelected ? 'bg-accent-soft' : ''}`}>
-        <button
-            className='flex items-center text-left'
-            aria-current={isSelected ? 'true' : undefined}
-            onClick={() => {
-              onSelect(personData.name);
-            }}
-        >
-            <img src={personData.profile_picture} alt="profileImg" className='w-[48px] h-[48px] rounded-full mr-3'/>
-            <div>
-                <div className='text-body font-bold'>{personData.name}</div>
-                <div className='text-body font-normal text-muted'>{`${personData.gender}, ${personData.age}`}</div>
-            </div>
-        </button>
-        <button className='w-5 h-5'>
-            <img src={ShowMore} alt="ShowMore"/>
-        </button>
+    <div
+      className={cx(
+        'flex items-center justify-between py-4 pr-[30px] pl-5 hover:bg-accent-soft',
+        isSelected && 'bg-accent-soft',
+      )}
+    >
+      <button
+        type="button"
+        aria-current={isSelected ? 'true' : undefined}
+        onClick={() => {
+          onSelect(patient.name);
+        }}
+        className="flex items-center gap-3 text-left"
+      >
+        <img src={patient.profile_picture} alt="" className="size-12 rounded-full" />
+        <span>
+          <span className="block text-body font-bold">{patient.name}</span>
+          <span className="block text-body text-muted">
+            {patient.gender}, {patient.age}
+          </span>
+        </span>
+      </button>
+      <button type="button" aria-label={`More options for ${patient.name}`} className="size-5">
+        <img src={moreHorizontalIcon} alt="" />
+      </button>
     </div>
-  )
+  );
 }
-
-export default PatientCard

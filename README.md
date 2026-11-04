@@ -12,19 +12,20 @@ The layout was designed primarily for desktop screens, as the dashboard is inten
 
 ## Features
 
-- Patient overview with personal information and vital signs
-- Display of test results and visit history
-- Charts built with Chart.js
-- Data fetching from an external API with basic authentication
-- Dashboard layout styled with Tailwind CSS
+- Patient list: picking a patient updates every panel
+- Patient profile with personal information and vital signs
+- Blood pressure chart for the last six months (Chart.js)
+- Diagnostic list and lab results
+- Loading and error states for the patients request
 
 ## Tech Stack
 
-- React 19
+- React 19 + TypeScript (strict)
 - Vite 8
-- Tailwind CSS 4
-- Chart.js 4 (via react-chartjs-2)
+- Tailwind CSS 4 (CSS-first theme in `src/styles/index.css`)
+- Chart.js 4 via react-chartjs-2
 - date-fns
+- Vitest + Testing Library, ESLint (typescript-eslint, react-hooks), Prettier
 
 ## Getting Started
 
@@ -38,8 +39,33 @@ npm run dev    # starts the dev server at http://localhost:5173
 
 ## Scripts
 
-| Command           | Description                              |
-| ----------------- | ---------------------------------------- |
-| `npm run dev`     | Start the Vite dev server                |
-| `npm run build`   | Build the production bundle into `dist/` |
-| `npm run preview` | Serve the production build locally       |
+| Command                | Description                                         |
+| ---------------------- | --------------------------------------------------- |
+| `npm run dev`          | Start the Vite dev server                           |
+| `npm run build`        | Type-check and build the production bundle (`dist`) |
+| `npm run preview`      | Serve the production build locally                  |
+| `npm run typecheck`    | Run the TypeScript compiler without emitting        |
+| `npm run lint`         | Lint with ESLint                                    |
+| `npm run format`       | Format with Prettier (also sorts Tailwind classes)  |
+| `npm run format:check` | Check formatting without writing                    |
+| `npm test`             | Run the test suite once                             |
+| `npm run test:watch`   | Run tests in watch mode                             |
+
+## Project Structure
+
+```
+src/
+  api/          # HTTP client for the patients API
+  hooks/        # usePatients: loading / error / success state with request cancellation
+  components/   # UI; diagnosis-history/ groups the chart and vitals widgets
+  utils/        # Pure helpers: date parsing, vitals series, class names
+  types/        # API response types
+  styles/       # Tailwind entry point and design tokens
+  assets/       # Icons and images
+  test/         # Test setup and fixtures
+```
+
+## Notes
+
+- **API credentials.** `.env` holds the public demo credentials from the assignment. `VITE_*` values end up in the client bundle, so real secrets would live on a backend.
+- **Featured patient.** Jessica Taylor is selected by default, as in the design. The API only serves 96×96 avatars, so her 400×400 portrait is bundled with the app.

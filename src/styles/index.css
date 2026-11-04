@@ -1,0 +1,77 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Manrope', ui-sans-serif, system-ui, sans-serif;
+
+  --color-ink: #072635;
+  --color-muted: #707070;
+  --color-page: #f6f7f8;
+  --color-divider: #ededed;
+  --color-accent: #01f0d0;
+  --color-accent-soft: #d8fcf7;
+  --color-chart-bg: #f4f0fe;
+  --color-chart-divider: #cbc8d4;
+  --color-systolic: #e66fd2;
+  --color-diastolic: #8c6fe6;
+  --color-respiratory: #e0f3fa;
+  --color-temperature: #ffe6e9;
+  --color-heart-rate: #ffe6f1;
+  --color-scrollbar-track: #e3e4e6;
+
+  --text-title: 24px;
+  --text-title--line-height: 33px;
+  --text-title--font-weight: 800;
+
+  --text-subtitle: 18px;
+  --text-subtitle--line-height: 24px;
+  --text-subtitle--font-weight: 700;
+
+  --text-metric: 30px;
+  --text-metric--line-height: 41px;
+  --text-metric--font-weight: 800;
+
+  --text-metric-sm: 22px;
+  --text-metric-sm--line-height: 30px;
+  --text-metric-sm--font-weight: 700;
+
+  --text-label-lg: 16px;
+  --text-label-lg--line-height: 22px;
+  --text-label-lg--font-weight: 500;
+
+  --text-label: 14px;
+  --text-label--line-height: 19px;
+  --text-label--font-weight: 500;
+
+  --text-body: 14px;
+  --text-body--line-height: 19px;
+
+  --text-caption: 13px;
+  --text-caption--line-height: 18px;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-page);
+    color: var(--color-ink);
+  }
+
+  /* Tailwind v4 preflight no longer gives buttons a pointer cursor. */
+  button:not(:disabled),
+  [role='button']:not(:disabled) {
+    cursor: pointer;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    border-radius: 6px;
+    background-color: var(--color-scrollbar-track);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border-radius: 6px;
+    background-color: var(--color-ink);
+  }
+}

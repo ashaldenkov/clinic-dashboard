@@ -1,6 +1,7 @@
 
 import BirthIcon from '../assets/icons/birth-date.svg'
 import FemaleIcon from '../assets/icons/female.svg'
+import MaleIcon from '../assets/icons/male.svg'
 import PhoneIcon from '../assets/icons/phone.svg'
 import InsuranceIcon from '../assets/icons/insurance.svg'
 import ProfileImage from '../assets/images/jessica-taylor.png'
@@ -22,7 +23,7 @@ const PatientProfile = ({ clientData }: { clientData: Patient | undefined }) => 
           </div>
         </div>
         <div className='flex items-center mt-6'>
-          <img src={FemaleIcon} alt="FemaleIcon" className='mr-4'/>
+          <img src={clientData?.gender === 'Male' ? MaleIcon : FemaleIcon} alt="GenderIcon" className='mr-4'/>
           <div>
             <div className='text-label'>Gender</div>
             <div className='text-body font-bold'>{clientData?.gender}</div>

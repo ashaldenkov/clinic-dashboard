@@ -47,6 +47,7 @@ describe('App', () => {
   });
 
   it('shows an error when the patients cannot be loaded', async () => {
+    vi.spyOn(console, 'warn').mockImplementation(() => undefined);
     respondWith(new Response(null, { status: 500 }));
     render(<App />);
 

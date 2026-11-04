@@ -3,12 +3,12 @@ import ShowMore from '../assets/icons/more-horizontal.svg';
 
 const PatientCard = ({personData}) => {
   return (
-    <div className={`pl-5 py-4 pr-[30px] flex justify-between items-center hover:bg-activePatient ${personData.name === 'Jessica Taylor' ? 'bg-activePatient' : ''}`}>
-        <button className='flex items-center '>
+    <div className={`pl-5 py-4 pr-[30px] flex justify-between items-center hover:bg-accent-soft ${personData.name === 'Jessica Taylor' ? 'bg-accent-soft' : ''}`}>
+        <button className='flex items-center text-left'>
             <img src={personData.profile_picture} alt="profileImg" className='w-[48px] h-[48px] rounded-full mr-3'/>
             <div>
-                <div className='body-emphasized-14pt'>{personData.name}</div>
-                <div className='body-secondary-info-14pt'>{`${personData.gender}, ${personData.age}`}</div>
+                <div className='text-body font-bold'>{personData.name}</div>
+                <div className='text-body font-normal text-muted'>{`${personData.gender}, ${personData.age}`}</div>
             </div>
         </button>
         <button className='w-5 h-5'>

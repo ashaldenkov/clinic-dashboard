@@ -12,7 +12,7 @@ function App() {
   const { clients } = useGetData();
   
   return (
-    <div className="bg-bodyBg p-[18px] ">
+    <div className="bg-page p-[18px] ">
       <Header/>
       <div className='flex justify-center'>
         <Patients patientList={clients}/>

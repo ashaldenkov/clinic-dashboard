@@ -11,14 +11,14 @@ import ShowMore from '../assets/icons/more-vertical.svg';
 
 export default function Header () {
   return (
-    <div className='flex justify-between h-[72px] px-8 py-[14px] bg-white rounded-[72px] body-emphasized-14pt mb-[18px]'>
+    <div className='flex justify-between h-[72px] px-8 py-[14px] bg-white rounded-[72px] text-body font-bold mb-[18px]'>
         <img src={TestLogo} alt="Logo" />
         <div className='flex'>
             <button className='flex items-center px-4 py-3 mr-6 rounded-full hover:bg-teal-200 duration-300	'>
                 <img src={Home} alt="OverviewImg" />
                 <div className='pl-[9px]'>Overview</div>
             </button>
-            <button className='flex items-center px-4 py-3 rounded-full bg-activeState'>
+            <button className='flex items-center px-4 py-3 rounded-full bg-accent'>
                 <img src={Group} alt="PatientsImg" />
                 <div className='pl-[9px]'>Patients</div>
             </button>
@@ -42,12 +42,12 @@ export default function Header () {
                     <div>
                     Dr. Jose Simmons
                     </div>
-                    <div className='body-secondary-info-14pt text-sideText'>
+                    <div className='text-body font-normal text-muted'>
                     General Practitioner
                     </div>
                 </div>
             </div>
-            <div className='flex items-center pl-3 border-l border-verticalDash'>
+            <div className='flex items-center pl-3 border-l border-divider'>
                 <button className='mr-3'>
                     <img src={Settings} alt="SettingsImg" />
                 </button>

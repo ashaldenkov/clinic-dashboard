@@ -44,3 +44,19 @@ describe('getBloodPressureSeries', () => {
     expect(getBloodPressureSeries([], 6)).toEqual({ labels: [], systolic: [], diastolic: [] });
   });
 });
+
+describe('records with an unrecognized month', () => {
+  // Placed last: with a NaN sort key it would be taken as the latest record.
+  const withBadRecord = [
+    ...history,
+    makeRecord('Unknown', 2024, { systolic: 999, diastolic: 999 }),
+  ];
+
+  it('are left out of the series instead of throwing', () => {
+    expect(getBloodPressureSeries(withBadRecord, 6)).toEqual(getBloodPressureSeries(history, 6));
+  });
+
+  it('are never picked as the latest record', () => {
+    expect(getLatestRecord(withBadRecord)).toMatchObject({ month: 'March', year: 2024 });
+  });
+});

@@ -1,5 +1,5 @@
 import React from 'react'
-import Search from '../images/search_FILL0_wght300_GRAD0_opsz24.svg';
+import Search from '../assets/icons/search.svg';
 import PatientCard from './patientCard'
 import { v4 as uuidv4 } from 'uuid';
 

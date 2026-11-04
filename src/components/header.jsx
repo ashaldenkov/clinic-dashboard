@@ -1,13 +1,13 @@
 import React from 'react'
-import TestLogo from '../images/TestLogo.svg';
-import Home from '../images/home_FILL0_wght300_GRAD0_opsz24.svg';
-import Group from '../images/group_FILL0_wght300_GRAD0_opsz24.svg';
-import Calendar from '../images/calendar_today_FILL0_wght300_GRAD0_opsz24.svg';
-import Chat from '../images/chat_bubble_FILL0_wght300_GRAD0_opsz24.svg';
-import Transactions from '../images/credit_card_FILL0_wght300_GRAD0_opsz24.svg';
-import Doctor from '../images/senior-woman-doctor-and-portrait-smile-for-health-2023-11-27-05-18-16-utc.png';
-import Settings from '../images/settings_FILL0_wght300_GRAD0_opsz24.svg';
-import ShowMore from '../images/more_vert_FILL0_wght300_GRAD0_opsz24.svg';
+import TestLogo from '../assets/images/logo.svg';
+import Home from '../assets/icons/home.svg';
+import Group from '../assets/icons/group.svg';
+import Calendar from '../assets/icons/calendar.svg';
+import Chat from '../assets/icons/chat.svg';
+import Transactions from '../assets/icons/credit-card.svg';
+import Doctor from '../assets/images/doctor.png';
+import Settings from '../assets/icons/settings.svg';
+import ShowMore from '../assets/icons/more-vertical.svg';
 
 export default function Header () {
   return (

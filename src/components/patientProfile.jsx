@@ -1,11 +1,11 @@
 import React from 'react'
 import { format } from 'date-fns'
 
-import BirthIcon from '../images/BirthIcon.svg'
-import FemaleIcon from '../images/FemaleIcon.svg'
-import PhoneIcon from '../images/PhoneIcon.svg'
-import InsuranceIcon from '../images/InsuranceIcon.svg'
-import ProfileImage from '../images/Layer 2@2x.png'
+import BirthIcon from '../assets/icons/birth-date.svg'
+import FemaleIcon from '../assets/icons/female.svg'
+import PhoneIcon from '../assets/icons/phone.svg'
+import InsuranceIcon from '../assets/icons/insurance.svg'
+import ProfileImage from '../assets/images/jessica-taylor.png'
 
 
 const PatientProfile = ({clientData}) => {

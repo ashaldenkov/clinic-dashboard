@@ -1,5 +1,5 @@
 import React from 'react'
-import ShowMore from '../images/more_horiz_FILL0_wght300_GRAD0_opsz24.svg';
+import ShowMore from '../assets/icons/more-horizontal.svg';
 
 const PatientCard = ({personData}) => {
   return (

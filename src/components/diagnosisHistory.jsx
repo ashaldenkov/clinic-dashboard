@@ -1,9 +1,9 @@
-import Respiratory from '../images/respiratory rate.svg'
-import Temperature from '../images/temperature.svg'
-import HeartRate from '../images/HeartBPM.svg'
-import ArrowDown from '../images/ArrowDown.svg'
-import ArrowUp from '../images/ArrowUp.svg'
-import ExpandMore from '../images/expand_more_FILL0_wght300_GRAD0_opsz24.svg'
+import Respiratory from '../assets/icons/respiratory-rate.svg'
+import Temperature from '../assets/icons/temperature.svg'
+import HeartRate from '../assets/icons/heart-rate.svg'
+import ArrowDown from '../assets/icons/arrow-down.svg'
+import ArrowUp from '../assets/icons/arrow-up.svg'
+import ExpandMore from '../assets/icons/expand-more.svg'
 import LineChart from '../components/lineChart'
 
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import DownloadIcon from '../images/download_FILL0_wght300_GRAD0_opsz24 (1).svg'
+import DownloadIcon from '../assets/icons/download.svg'
 import { v4 as uuidv4 } from 'uuid';
 
 

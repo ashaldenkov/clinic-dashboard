@@ -1,34 +1,57 @@
-
-import Header from './components/Header'
+import DiagnosisHistory from './components/DiagnosisHistory';
+import DiagnosticList from './components/DiagnosticList';
+import Header from './components/Header';
+import LabResults from './components/LabResults';
 import PatientList from './components/PatientList';
-import PatientProfile from './components/PatientProfile'
-import LabResults from './components/LabResults'
-import DiagnosisHistory from './components/DiagnosisHistory'
-import DiagnosticList from './components/DiagnosticList'
-
-import { useGetData } from './hooks/useGetData';
+import PatientProfile from './components/PatientProfile';
+import { usePatients } from './hooks/usePatients';
 
 function App() {
-  const { clients } = useGetData();
-  
   return (
-    <div className="bg-page p-[18px] ">
-      <Header/>
-      <div className='flex justify-center'>
-        <PatientList patientList={clients}/>
-        <div>
-          {/* as far as there's no need for displaying other patients' data, Jessica's data is hardcoded as active patient*/}
-          <DiagnosisHistory clientData={clients[3]}/>
-          <DiagnosticList clientData={clients[3]}/>
-        </div>
-        <div>
-          {/* patient profile has strange margins alike the other columns on the mockup, that's why right columns slightly out of the position*/}
-          <PatientProfile clientData={clients[3]}/>
-          <LabResults clientData={clients[3]}/>
-        </div>
+    <div className="bg-page p-[18px]">
+      <Header />
+      <div className="flex justify-center">
+        <Dashboard />
       </div>
-
     </div>
+  );
+}
+
+function Dashboard() {
+  const patientsState = usePatients();
+
+  if (patientsState.status === 'loading') {
+    return (
+      <p role="status" className="mt-10 text-body text-muted">
+        Loading patients…
+      </p>
+    );
+  }
+
+  if (patientsState.status === 'error') {
+    return (
+      <p role="alert" className="mt-10 text-body">
+        Could not load patients. {patientsState.error.message}
+      </p>
+    );
+  }
+
+  const { patients } = patientsState;
+  // as far as there's no need for displaying other patients' data, Jessica's data is hardcoded as active patient
+  const activePatient = patients[3];
+
+  return (
+    <>
+      <PatientList patientList={patients} />
+      <div>
+        <DiagnosisHistory clientData={activePatient} />
+        <DiagnosticList clientData={activePatient} />
+      </div>
+      <div>
+        <PatientProfile clientData={activePatient} />
+        <LabResults clientData={activePatient} />
+      </div>
+    </>
   );
 }
 
